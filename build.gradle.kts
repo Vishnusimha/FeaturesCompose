@@ -4,4 +4,6 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.9.0" apply false
     //    Hilt
     id("com.google.dagger.hilt.android") version "2.48" apply false
+//    Kapt to Ksp migration
+    id("com.google.devtools.ksp") version "1.8.10-1.0.9" apply false
 }

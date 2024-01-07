@@ -3,7 +3,10 @@ plugins {
     id("org.jetbrains.kotlin.android")
     //    hilt
     id("com.google.dagger.hilt.android")
+//    TODO since added ksp check if kapt plugin can be removed
     id("kotlin-kapt")
+//    Kapt to Ksp migration
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -12,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId = "com.vishnu.featurescompose"
-        minSdk = 34
+        minSdk = 29
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -76,6 +79,8 @@ dependencies {
 //    Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+//    moshi
+    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
 
 // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.48")
@@ -108,6 +113,14 @@ dependencies {
 
 // Gson
     implementation("com.google.code.gson:gson:2.10")
+// Paging
+    implementation ("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation ("androidx.paging:paging-compose:3.2.1")
+    // Room
+    implementation ("androidx.room:room-ktx:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
+//    ksp("androidx.room:room-compiler:2.6.1")
+    implementation ("androidx.room:room-paging:2.6.1")
 }
 
 // TODO check if its really needed for hilt
