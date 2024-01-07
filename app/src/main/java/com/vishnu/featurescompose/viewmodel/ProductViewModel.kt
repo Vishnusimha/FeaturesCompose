@@ -3,9 +3,9 @@ package com.vishnu.featurescompose.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vishnu.featurescompose.data.AddProductRequest
-import com.vishnu.featurescompose.data.AddProductResponse
-import com.vishnu.featurescompose.data.Product
+import com.vishnu.featurescompose.data.remote.AddProductRequestDto
+import com.vishnu.featurescompose.data.remote.AddProductResponseDto
+import com.vishnu.featurescompose.data.remote.ProductDto
 import com.vishnu.featurescompose.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -19,12 +19,12 @@ import javax.inject.Inject
 class ProductViewModel @Inject constructor(private val repository: ProductRepository) :
     ViewModel() {
 
-    private val _products = MutableStateFlow<List<Product>>(emptyList())
-    val products: Flow<List<Product>> get() = _products.asStateFlow()
+    private val _products = MutableStateFlow<List<ProductDto>>(emptyList())
+    val products: Flow<List<ProductDto>> get() = _products.asStateFlow()
 
 
-    private val _addProductResponse = MutableStateFlow<AddProductResponse?>(null)
-    val addProductResponse: Flow<AddProductResponse?> get() = _addProductResponse.asStateFlow()
+    private val _addProductResponse = MutableStateFlow<AddProductResponseDto?>(null)
+    val addProductResponse: Flow<AddProductResponseDto?> get() = _addProductResponse.asStateFlow()
 
 
 //    //Full ThingSpeak cloud data
@@ -32,8 +32,8 @@ class ProductViewModel @Inject constructor(private val repository: ProductReposi
 //    val scd40FullJsonThingSpeakCloudData: Flow<String?> get() = _scd40FullJsonThingSpeakCloudData.asStateFlow()
 
 //
-//    private val _products = MutableLiveData<List<Product>>()
-//    val products: LiveData<List<Product>> get() = _products
+//    private val _products = MutableLiveData<List<ProductDto>>()
+//    val products: LiveData<List<ProductDto>> get() = _products
 
     fun fetchProducts() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -42,19 +42,16 @@ class ProductViewModel @Inject constructor(private val repository: ProductReposi
         }
     }
 
-
-//........................................................................
-
-
-    fun addProduct(product: AddProductRequest) {
+    //........................................................................
+    fun addProduct(product: AddProductRequestDto) {
         viewModelScope.launch(Dispatchers.IO) {
-            Log.d("viewModel", product.toString())
+            Log.d("productViewModel", product.toString())
             val response = repository.addProduct(product)
             _addProductResponse.value = response.body()
 
-            Log.d("viewModel", response.code().toString())
-            Log.d("viewModel", response.message())
-            Log.d("viewModel", response.body().toString())
+            Log.d("productViewModel", response.code().toString())
+            Log.d("productViewModel", response.message())
+            Log.d("productViewModel", response.body().toString())
         }
     }
 }

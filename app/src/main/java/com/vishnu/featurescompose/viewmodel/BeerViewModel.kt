@@ -1,4 +1,4 @@
-package com.vishnu.featurescompose.presentation
+package com.vishnu.featurescompose.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

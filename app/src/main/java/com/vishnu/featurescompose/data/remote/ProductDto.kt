@@ -1,6 +1,6 @@
-package com.vishnu.featurescompose.data
+package com.vishnu.featurescompose.data.remote
 
-data class Product(
+data class ProductDto(
     val image: String,
     val price: Double,
     val product_name: String,
