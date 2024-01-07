@@ -9,7 +9,7 @@ import com.vishnu.featurescompose.data.local.BeerDatabase
 import com.vishnu.featurescompose.data.local.BeerEntity
 import com.vishnu.featurescompose.data.remote.BeerApi
 import com.vishnu.featurescompose.data.remote.BeerRemoteMediator
-import com.vishnu.featurescompose.data.remote.SwipeApiService
+import com.vishnu.featurescompose.data.remote.ProductApiService
 import com.vishnu.featurescompose.repository.ProductRepository
 import com.vishnu.featurescompose.viewmodel.ProductViewModel
 import dagger.Module
@@ -31,17 +31,17 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideSwipeApiService(): SwipeApiService {
+    fun provideSwipeApiService(): ProductApiService {
         return Retrofit.Builder()
             .baseUrl(SWIPE_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(SwipeApiService::class.java)
+            .create(ProductApiService::class.java)
     }
 
     @Provides
-    fun provideProductRepository(swipeApiService: SwipeApiService): ProductRepository {
-        return ProductRepository(swipeApiService)
+    fun provideProductRepository(productApiService: ProductApiService): ProductRepository {
+        return ProductRepository(productApiService)
     }
 
     @Provides

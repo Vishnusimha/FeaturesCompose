@@ -6,7 +6,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-interface SwipeApiService {
+interface ProductApiService {
     @GET("get")
     suspend fun getProducts(): Response<List<ProductDto>>
 

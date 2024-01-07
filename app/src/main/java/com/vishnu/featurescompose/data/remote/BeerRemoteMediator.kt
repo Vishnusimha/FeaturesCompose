@@ -12,6 +12,7 @@ import com.vishnu.featurescompose.data.mappers.toBeerEntity
 import retrofit2.HttpException
 import java.io.IOException
 
+/** *BeerRemoteMediator* is like Repository alternative, because here we are implementing all BeerApi functions*/
 @OptIn(ExperimentalPagingApi::class)
 class BeerRemoteMediator(
     private val beerDb: BeerDatabase,
@@ -23,7 +24,6 @@ class BeerRemoteMediator(
         state: PagingState<Int, BeerEntity>
     ): MediatorResult {
         return try {
-
             /** loadKey, helps in next page to load i.e page in the link https://api.punkapi.com/v2/beers?page=4&per_page=80.
              * Handling the logic for determining the page to be loaded when the load type is LoadType.APPEND. In a paginated data source, when the user scrolls to the end of the currently loaded data, a new page is requested to append more items to the existing list.*/
             val loadKey = when (loadType) {
