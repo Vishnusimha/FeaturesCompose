@@ -9,8 +9,8 @@ import com.vishnu.featurescompose.data.local.BeerDatabase
 import com.vishnu.featurescompose.data.local.BeerEntity
 import com.vishnu.featurescompose.data.remote.BeerApi
 import com.vishnu.featurescompose.data.remote.BeerRemoteMediator
+import com.vishnu.featurescompose.data.remote.SwipeApiService
 import com.vishnu.featurescompose.repository.ProductRepository
-import com.vishnu.featurescompose.repository.SwipeApiService
 import com.vishnu.featurescompose.viewmodel.ProductViewModel
 import dagger.Module
 import dagger.Provides

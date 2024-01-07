@@ -1,14 +1,15 @@
 package com.vishnu.featurescompose.repository
 
 import android.util.Log
-import com.vishnu.featurescompose.data.AddProductRequest
-import com.vishnu.featurescompose.data.AddProductResponse
-import com.vishnu.featurescompose.data.Product
+import com.vishnu.featurescompose.data.remote.AddProductRequestDto
+import com.vishnu.featurescompose.data.remote.AddProductResponseDto
+import com.vishnu.featurescompose.data.remote.ProductDto
+import com.vishnu.featurescompose.data.remote.SwipeApiService
 import retrofit2.Response
 import javax.inject.Inject
 
 class ProductRepository @Inject constructor(private val swipeApiService: SwipeApiService) {
-    suspend fun getProducts(): List<Product>? {
+    suspend fun getProducts(): List<ProductDto>? {
         val response = swipeApiService.getProducts()
         return if (response.isSuccessful) {
             response.body()
@@ -17,7 +18,7 @@ class ProductRepository @Inject constructor(private val swipeApiService: SwipeAp
         }
     }
 
-    suspend fun addProduct(product: AddProductRequest): Response<AddProductResponse> {
+    suspend fun addProduct(product: AddProductRequestDto): Response<AddProductResponseDto> {
         return try {
             Log.d("ProductRepository", "addProduct called")
             swipeApiService.addProduct(

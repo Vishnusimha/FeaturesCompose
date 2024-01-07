@@ -1,7 +1,5 @@
-package com.vishnu.featurescompose.repository
+package com.vishnu.featurescompose.data.remote
 
-import com.vishnu.featurescompose.data.AddProductResponse
-import com.vishnu.featurescompose.data.Product
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -10,10 +8,10 @@ import retrofit2.http.POST
 
 interface SwipeApiService {
     @GET("get")
-    suspend fun getProducts(): Response<List<Product>>
+    suspend fun getProducts(): Response<List<ProductDto>>
 
     //    @POST("public/add")
-//    suspend fun addProduct(@Body request: AddProductRequest): Response<AddProductResponse>
+//    suspend fun addProduct(@Body request: AddProductRequestDto): Response<AddProductResponseDto>
 //
     @FormUrlEncoded
     @POST("add")
@@ -22,6 +20,6 @@ interface SwipeApiService {
         @Field("product_type") product_type: String,
         @Field("price") price: String,
         @Field("tax") tax: String
-    ): Response<AddProductResponse>
+    ): Response<AddProductResponseDto>
 
 }

@@ -42,8 +42,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.vishnu.featurescompose.data.AddProductRequest
-import com.vishnu.featurescompose.data.Product
+import com.vishnu.featurescompose.data.remote.AddProductRequestDto
+import com.vishnu.featurescompose.data.remote.ProductDto
 import com.vishnu.featurescompose.ui.theme.Purple80
 import com.vishnu.featurescompose.viewmodel.ProductViewModel
 
@@ -65,7 +65,7 @@ fun ProductsScreen(viewModel: ProductViewModel) {
         Log.d("ProductsScreen", "LaunchedEffect")
 
         viewModel.addProduct(
-            AddProductRequest(
+            AddProductRequestDto(
                 product_name = "Ice Cream",
                 product_type = "Food",
                 price = "100.0",
@@ -75,7 +75,7 @@ fun ProductsScreen(viewModel: ProductViewModel) {
     }
 
     @Composable
-    fun ProductRow(product: Product, color: Color) {
+    fun ProductRow(product: ProductDto, color: Color) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
@@ -88,8 +88,8 @@ fun ProductsScreen(viewModel: ProductViewModel) {
                     .background(color)
                     .padding(8.dp)
             ) {
-                Text(text = "Product Name: ${product.product_name}")
-                Text(text = "Product Type: ${product.product_type}")
+                Text(text = "ProductDto Name: ${product.product_name}")
+                Text(text = "ProductDto Type: ${product.product_type}")
                 Text(text = "Selling Price: ${product.price}")
                 Text(text = "Tax: ${product.tax}")
 
@@ -137,7 +137,7 @@ fun ProductsScreen(viewModel: ProductViewModel) {
 //                onClick = {
 ////                    viewModel.fetchProducts()
 //                    viewModel.addProduct(
-//                        AddProductRequest(
+//                        AddProductRequestDto(
 //                            product_name = "Ice Cream",
 //                            product_type = "Food",
 //                            price = "100.0",
@@ -172,7 +172,7 @@ fun ProductsScreen(viewModel: ProductViewModel) {
 //                            }
 //                        }
 //                    ) {
-//                        Text("Product added successfully: ${response.product_details.product_name}")
+//                        Text("ProductDto added successfully: ${response.product_details.product_name}")
 //                    }
 //                } else {
 //                    Snackbar(
@@ -259,7 +259,7 @@ fun ProductsScreen(viewModel: ProductViewModel) {
                     onClick = {
                         viewModel.fetchProducts()
                         viewModel.addProduct(
-                            AddProductRequest(
+                            AddProductRequestDto(
                                 product_name = "Ice Cream",
                                 product_type = "Food",
                                 price = "100.0",
@@ -294,7 +294,7 @@ fun ProductsScreen(viewModel: ProductViewModel) {
                                 }
                             }
                         ) {
-                            Text("Product added successfully: ${response.product_details.product_name}")
+                            Text("ProductDto added successfully: ${response.product_details.product_name}")
                         }
                     } else {
                         Snackbar(

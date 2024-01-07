@@ -13,6 +13,7 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.vishnu.featurescompose.domain.Beer
 import com.vishnu.featurescompose.ui.theme.FeaturesComposeTheme
+import com.vishnu.featurescompose.viewmodel.BeerViewModel
 import com.vishnu.featurescompose.viewmodel.ProductViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
