@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ProductsScreen(productViewModel)
+//                    ProductsScreen(productViewModel)
 //                    Beers
                     val viewModel = hiltViewModel<BeerViewModel>()
                     val beers: LazyPagingItems<Beer> =
