@@ -26,9 +26,9 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+
 @Composable
 fun ShimmerListItem(
     isLoading: Boolean,
@@ -41,6 +41,7 @@ fun ShimmerListItem(
         contentAfterLoading()
     }
 }
+
 @Composable
 private fun ShimmerViewItem(modifier: Modifier) {
     Row(modifier = modifier) {
@@ -70,6 +71,7 @@ private fun ShimmerViewItem(modifier: Modifier) {
         }
     }
 }
+
 fun Modifier.shimmerEffect(): Modifier = composed {
     var size by remember {
         mutableStateOf(IntSize.Zero)

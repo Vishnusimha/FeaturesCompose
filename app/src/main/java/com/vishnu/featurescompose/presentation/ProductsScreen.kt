@@ -278,7 +278,6 @@ fun ProductsScreen(viewModel: ProductViewModel) {
                     }
                 }
 
-
                 // Display the result of the post call
                 addProductResponse?.let { response ->
                     if (response.success) {
