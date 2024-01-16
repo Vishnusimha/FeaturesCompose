@@ -7,6 +7,8 @@ plugins {
     id("kotlin-kapt")
 //    Kapt to Ksp migration
     id("com.google.devtools.ksp")
+//    Firebase
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -72,15 +74,17 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    //    firebase
+    implementation("com.google.firebase:firebase-database:20.3.0")
 
 //    coil for image loading (alternative for glide)
     implementation("io.coil-kt:coil-compose:2.5.0")
 
 //    Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 //    moshi
-    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
 
 // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.48")
@@ -114,13 +118,13 @@ dependencies {
 // Gson
     implementation("com.google.code.gson:gson:2.10")
 // Paging
-    implementation ("androidx.paging:paging-runtime-ktx:3.2.1")
-    implementation ("androidx.paging:paging-compose:3.2.1")
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation("androidx.paging:paging-compose:3.2.1")
     // Room
-    implementation ("androidx.room:room-ktx:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
 //    ksp("androidx.room:room-compiler:2.6.1")
-    implementation ("androidx.room:room-paging:2.6.1")
+    implementation("androidx.room:room-paging:2.6.1")
 }
 
 // TODO check if its really needed for hilt

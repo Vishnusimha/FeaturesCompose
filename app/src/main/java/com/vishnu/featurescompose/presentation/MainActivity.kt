@@ -17,6 +17,7 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.vishnu.featurescompose.domain.Beer
 import com.vishnu.featurescompose.ui.theme.FeaturesComposeTheme
+import com.vishnu.featurescompose.viewmodel.AuthorViewModel
 import com.vishnu.featurescompose.viewmodel.BeerViewModel
 import com.vishnu.featurescompose.viewmodel.ProductViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val productViewModel: ProductViewModel by viewModels()
+    private val authorViewModel: AuthorViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -55,6 +57,9 @@ class MainActivity : ComponentActivity() {
                                 viewModel.beerPagingFlow.collectAsLazyPagingItems()
                             // Getting beers from view model and sending to BeerScreen to display
                             BeerScreen(beers = beers)
+                        }
+                        composable("firebase_screen") {
+                            FireBaseScreen(authorViewModel)
                         }
                     }
                 }

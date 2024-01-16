@@ -49,6 +49,12 @@ fun LandingScreen(navController: NavController) {
             Button(onClick = { navController.navigate("beer_screen") }) {
                 Text("beer screen")
             }
+
+            Spacer(modifier = Modifier.height(42.dp))
+
+            Button(onClick = { navController.navigate("firebase_screen") }) {
+                Text("firebase screen")
+            }
         }
     }
 }
