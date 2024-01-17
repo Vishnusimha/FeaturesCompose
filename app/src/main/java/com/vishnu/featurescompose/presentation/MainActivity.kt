@@ -8,8 +8,10 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -43,26 +45,35 @@ class MainActivity : ComponentActivity() {
                         }
                     }
 // In the nav host we just add all the screens related to this activity and pass all req parameters into the screen
-                    NavHost(navController = navController, startDestination = "landing_screen") {
-                        composable("landing_screen") {
-                            LandingScreen(navController)
-                        }
-                        composable("products_screen") {
-                            ProductsScreen(productViewModel)
-                        }
-                        composable("beer_screen") {
-                            //Beers
-                            val viewModel = hiltViewModel<BeerViewModel>()
-                            val beers: LazyPagingItems<Beer> =
-                                viewModel.beerPagingFlow.collectAsLazyPagingItems()
-                            // Getting beers from view model and sending to BeerScreen to display
-                            BeerScreen(beers = beers)
-                        }
-                        composable("firebase_screen") {
-                            FireBaseScreen(authorViewModel)
-                        }
-                    }
+                    NavigationGraph(navController)
                 }
+            }
+        }
+    }
+
+    @Composable
+    private fun NavigationGraph(navController: NavHostController) {
+        // In the nav host we just add all the screens related to this activity and pass all req parameters into the screen
+        NavHost(
+            navController = navController,
+            startDestination = Screen.LandingScreen.route
+        ) {
+            composable(Screen.LandingScreen.route) {
+                LandingScreen(navController)
+            }
+            composable(Screen.ProductsScreen.route) {
+                ProductsScreen(productViewModel)
+            }
+            composable(Screen.BeerScreen.route) {
+                //Beers
+                val viewModel = hiltViewModel<BeerViewModel>()
+                val beers: LazyPagingItems<Beer> =
+                    viewModel.beerPagingFlow.collectAsLazyPagingItems()
+                // Getting beers from view model and sending to BeerScreen to display
+                BeerScreen(beers = beers)
+            }
+            composable(Screen.FirebaseScreen.route) {
+                FireBaseScreen(authorViewModel)
             }
         }
     }

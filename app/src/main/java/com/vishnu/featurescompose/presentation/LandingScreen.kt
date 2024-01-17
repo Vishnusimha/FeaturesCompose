@@ -40,19 +40,19 @@ fun LandingScreen(navController: NavController) {
             )
             Spacer(modifier = Modifier.height(42.dp))
 
-            Button(onClick = { navController.navigate("products_screen") }) {
+            Button(onClick = { navController.navigate(Screen.ProductsScreen.route) }) {
                 Text("products screen")
             }
 
             Spacer(modifier = Modifier.height(42.dp))
 
-            Button(onClick = { navController.navigate("beer_screen") }) {
+            Button(onClick = { navController.navigate(Screen.BeerScreen.route) }) {
                 Text("beer screen")
             }
 
             Spacer(modifier = Modifier.height(42.dp))
 
-            Button(onClick = { navController.navigate("firebase_screen") }) {
+            Button(onClick = { navController.navigate(Screen.FirebaseScreen.route) }) {
                 Text("firebase screen")
             }
         }
