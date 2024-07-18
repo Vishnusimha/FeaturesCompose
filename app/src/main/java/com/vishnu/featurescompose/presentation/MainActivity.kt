@@ -21,13 +21,17 @@ import com.vishnu.featurescompose.domain.Beer
 import com.vishnu.featurescompose.ui.theme.FeaturesComposeTheme
 import com.vishnu.featurescompose.viewmodel.AuthorViewModel
 import com.vishnu.featurescompose.viewmodel.BeerViewModel
+import com.vishnu.featurescompose.viewmodel.FilesViewModel
 import com.vishnu.featurescompose.viewmodel.ProductViewModel
+import com.vishnu.featurescompose.viewmodel.SQLdbViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val productViewModel: ProductViewModel by viewModels()
     private val authorViewModel: AuthorViewModel by viewModels()
+    private val sqlDbViewModel: SQLdbViewModel by viewModels()
+    private val filesViewModel: FilesViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -60,6 +64,8 @@ class MainActivity : ComponentActivity() {
         ) {
             composable(Screen.LandingScreen.route) {
                 LandingScreen(navController)
+                sqlDbViewModel // ONly when we start utilising the ViewModel its code starts working i,e init{}
+                filesViewModel // ONly when we start utilising the ViewModel its code starts working i,e init{}
             }
             composable(Screen.ProductsScreen.route) {
                 ProductsScreen(productViewModel)

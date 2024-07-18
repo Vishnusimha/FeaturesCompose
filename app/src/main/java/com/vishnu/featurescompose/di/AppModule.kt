@@ -7,6 +7,8 @@ import androidx.paging.PagingConfig
 import androidx.room.Room
 import com.vishnu.featurescompose.data.local.BeerDatabase
 import com.vishnu.featurescompose.data.local.BeerEntity
+import com.vishnu.featurescompose.data.local.DatabaseHelper
+import com.vishnu.featurescompose.data.local.FileManager
 import com.vishnu.featurescompose.data.remote.BeerApi
 import com.vishnu.featurescompose.data.remote.BeerRemoteMediator
 import com.vishnu.featurescompose.data.remote.ProductApiService
@@ -28,6 +30,17 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
     private const val SWIPE_BASE_URL = "https://app.getswipe.in/api/public/"
+    @Provides
+    @Singleton
+    fun provideDatabaseHelper(@ApplicationContext context: Context): DatabaseHelper {
+        return DatabaseHelper(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFileManager(@ApplicationContext context: Context): FileManager {
+        return FileManager(context)
+    }
 
     @Singleton
     @Provides

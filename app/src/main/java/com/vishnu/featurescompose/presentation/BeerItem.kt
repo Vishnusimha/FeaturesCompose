@@ -1,5 +1,6 @@
 package com.vishnu.featurescompose.presentation
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -51,7 +52,7 @@ fun BeerItem(
             Column(
                 modifier = Modifier
                     .weight(3f)
-                    .fillMaxHeight(),
+                    .fillMaxHeight().background(Color.Cyan),
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
